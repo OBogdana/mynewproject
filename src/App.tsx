@@ -1,19 +1,18 @@
-import React from 'react';
-import './App.css';
+import {useState} from 'react';
 
-type headerProps = {
-    name: string;
+
+const App = () => {
+    const [state, setState] = useState({isAdmin: false, userName: "Kvas"});
+    const {isAdmin} = state;
+    const assignAdmin = () => {
+        setState({...state, isAdmin: true});
+    }
+    return (
+        <>
+            <h1>O, you is {isAdmin ? 'ADMIN' : 'a user'}</h1>
+            <button onClick={assignAdmin}>Click</button>
+        </>
+    )
 }
-
-const Header: React.FC<headerProps> = (props) => (
-    <header>Header {props.name}</header>
-)
-
-const App = () => (
-    <div className="App">
-        <Header name='WT'/>
-        <h1>Project</h1>
-    </div>
-)
 
 export default App;
